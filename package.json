@@ -1,5 +1,5 @@
 {
-  "name": "@maksimr/karma-image-snapshot",
+  "name": "karma-image-snapshot",
   "version": "0.0.2",
   "main": "./src/index.js",
   "keywords": [
