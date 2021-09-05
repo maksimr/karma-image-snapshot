@@ -17,4 +17,3 @@ jobs:
         run: |
           npm ci
           npm run test:type
-          npm test

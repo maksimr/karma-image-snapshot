@@ -1,52 +1,27 @@
 {
-  "name": "playground",
+  "name": "@maksimr/karma-image-snapshot",
   "version": "0.0.0",
   "main": "./src/index.js",
   "scripts": {
-    "start": "webpack serve --mode development --devtool eval-source-map --history-api-fallback --host 0.0.0.0 --client-web-socket-url auto://0.0.0.0:0/ws",
-    "build": "webpack --mode production",
-    "test": "jest --passWithNoTests",
     "test:type": "tsc",
     "lint": "eslint src/"
   },
   "devDependencies": {
     "typescript": "4.4.2",
-    "@babel/core": "7.15.5",
-    "@babel/preset-env": "7.15.4",
-    "@babel/eslint-parser": "7.15.4",
-    "babel-loader": "8.2.2",
-    "style-loader": "3.2.1",
-    "css-loader": "6.2.0",
-    "html-webpack-plugin": "5.3.2",
-    "webpack": "5.52.0",
-    "webpack-cli": "4.8.0",
-    "webpack-dev-server": "4.1.0",
-    "eslint": "7.32.0",
-    "jest": "27.1.0",
-    "jest-cli": "27.1.0"
+    "eslint": "7.32.0"
   },
   "eslintConfig": {
-    "parser": "@babel/eslint-parser",
     "parserOptions": {
-      "requireConfigFile": false,
-      "ecmaVersion": 8,
-      "sourceType": "module"
+      "ecmaVersion": 2020,
+      "requireConfigFile": false
     },
     "env": {
       "browser": true,
       "node": true
     },
     "rules": {
-      "no-undef": "warn",
-      "no-unused-vars": "warn",
-      "valid-jsdoc": [
-        "warn",
-        {
-          "requireReturn": false,
-          "requireParamDescription": false,
-          "requireReturnDescription": false
-        }
-      ]
+      "no-undef": "error",
+      "no-unused-vars": "error"
     }
   }
 }
