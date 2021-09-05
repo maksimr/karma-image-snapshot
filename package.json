@@ -3,6 +3,8 @@
   "version": "0.0.0",
   "main": "./src/index.js",
   "scripts": {
+    "release": "npm version patch -m 'bump: version to %s'",
+    "postrelease": "git push && git push --tags",
     "test": "karma start ./test/karma.config.js",
     "test:type": "tsc",
     "lint": "eslint src/"
