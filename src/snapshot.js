@@ -1,5 +1,3 @@
-/* global jasmine:readonly, beforeAll:readonly */
-// @ts-ignore
 jasmine.getEnv().addReporter({
   specStarted(spec) {
     // @ts-ignore
@@ -19,7 +17,6 @@ if (typeof window.screenshot === 'undefined') {
   window.screenshot = () => IMAGE_SNAPSHOT_NOT_SUPPORTED;
 }
 
-// @ts-ignore
 beforeAll(() => {
   if (window.parent) {
     ['banner', 'browsers'].forEach((id) => {
@@ -30,7 +27,6 @@ beforeAll(() => {
     });
   }
 
-  // @ts-ignore
   jasmine.addAsyncMatchers({
     toMatchImageSnapshot: function() {
       return {
