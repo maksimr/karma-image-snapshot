@@ -2,15 +2,18 @@ const { createCompareFn } = require('./snapshot-compare');
 const markTouchedFile = require('./outdated-snapshot-reporter').markTouchedFile;
 
 module.exports = {
+  // @ts-ignore
   'launcher:SnapshotPuppeteer': ['type', function(/* baseBrowserDecorator */ baseBrowserDecorator, /* args */ args, /*config.snapshot*/compareOptions) {
     const compare = createCompareFn(compareOptions || {});
+    // @ts-ignore
     const ChromeHeadless = require('karma-chrome-launcher')['launcher:ChromeHeadless'][1];
     ChromeHeadless.apply(this, arguments);
 
     let browser = null;
-    let screenshots = {};
+    let screenshots = /**@type {Object|null}*/({});
     this._start = async (url) => {
       const puppeteer = require('puppeteer');
+      // @ts-ignore
       browser = await puppeteer.launch({ args: this._getOptions('') });
       const page = await browser.newPage();
       await page.exposeFunction('setViewport', (options) => {
@@ -26,6 +29,7 @@ module.exports = {
       await page.goto(url);
     };
 
+    // @ts-ignore
     this.on('kill', async (done) => {
       if (browser != null) {
         console.log('Closing puppeteer browser.');

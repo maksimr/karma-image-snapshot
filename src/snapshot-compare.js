@@ -1,14 +1,18 @@
 const path = require('path');
+// @ts-ignore
 const { diffImageToSnapshot, runDiffImageToSnapshot } = require('jest-image-snapshot/src/diff-snapshot');
 const updateSnapshotDefault = process.argv.find((arg) => /^\s*(--updateSnapshot|-u)\s*$/.test(arg));
 const SNAPSHOTS_DIR = '__image_snapshots__';
 
+// @ts-ignore
 module.exports.createCompareFn = (defaultOptions = {}) => (actula, options = {}) => compare(actula, { ...defaultOptions, ...options });
 
 function compare(actual, {
+  // @ts-ignore
   currentSpec,
   customDiffConfig = {},
   customSnapshotsDir = path.join(path.dirname(__filename), SNAPSHOTS_DIR),
+  // @ts-ignore
   customDiffDir,
   diffDirection = 'horizontal',
   failureThreshold = 0,
@@ -19,6 +23,7 @@ function compare(actual, {
   runInProcess = false,
   allowSizeMismatch = false,
   comparisonMethod = 'pixelmatch',
+  // @ts-ignore
   markTouchedFile
 } = {}) {
   const snapshotIdentifier = currentSpec.fullName.replace(/\s+/g, '_');

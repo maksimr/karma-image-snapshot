@@ -1,18 +1,25 @@
+/* global jasmine:readonly, beforeAll:readonly */
+// @ts-ignore
 jasmine.getEnv().addReporter({
   specStarted(spec) {
+    // @ts-ignore
     jasmine.getEnv().currentSpec = spec;
   },
 
   specDone() {
+    // @ts-ignore
     jasmine.getEnv().currentSpec = null;
   }
 });
 
 const IMAGE_SNAPSHOT_NOT_SUPPORTED = -1;
+// @ts-ignore
 if (typeof window.screenshot === 'undefined') {
+  // @ts-ignore
   window.screenshot = () => IMAGE_SNAPSHOT_NOT_SUPPORTED;
 }
 
+// @ts-ignore
 beforeAll(() => {
   if (window.parent) {
     ['banner', 'browsers'].forEach((id) => {
@@ -23,6 +30,7 @@ beforeAll(() => {
     });
   }
 
+  // @ts-ignore
   jasmine.addAsyncMatchers({
     toMatchImageSnapshot: function() {
       return {
@@ -34,7 +42,9 @@ beforeAll(() => {
             };
           }
 
+          // @ts-ignore
           return await window.toMatchImageSnapshot(actual, {
+            // @ts-ignore
             currentSpec: jasmine.getEnv().currentSpec,
             ...options
           });

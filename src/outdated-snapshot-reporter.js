@@ -30,6 +30,7 @@ module.exports = {
         .filter(file => !touchedFiles[file]);
 
       obsoleteFiles.forEach((file) => {
+        // @ts-ignore
         this.write('Deleting outdated snapshot "%s"...\n', file);
         fs.unlinkSync(file);
       });
