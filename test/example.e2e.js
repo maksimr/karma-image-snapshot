@@ -16,4 +16,12 @@ describe('example', () => {
     // @ts-ignore
     await expectAsync(image).toMatchImageSnapshot();
   });
+
+  it('should not match if snapshots are diffirent', async function() {
+    rootNode.innerHTML = '<svg><circle fill="red" cx="25" cy="75" r="20"/></svg>';
+    // @ts-ignore
+    const image = await window.screenshot();
+    // @ts-ignore
+    await expectAsync(image).not.toMatchImageSnapshot();
+  });
 });
