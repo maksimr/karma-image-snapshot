@@ -5,6 +5,7 @@
     "noEmit": true,
     "strict": true,
     "noImplicitAny": false,
+    "module": "commonjs",
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true,
