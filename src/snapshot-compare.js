@@ -1,18 +1,38 @@
 const path = require('path');
-// @ts-ignore
 const { diffImageToSnapshot, runDiffImageToSnapshot } = require('jest-image-snapshot/src/diff-snapshot');
-const updateSnapshotDefault = process.argv.find((arg) => /^\s*(--updateSnapshot|-u)\s*$/.test(arg));
+const updateSnapshotDefault = Boolean(process.argv.find((arg) => /^\s*(--updateSnapshot|-u)\s*$/.test(arg)));
 const SNAPSHOTS_DIR = '__image_snapshots__';
 
-// @ts-ignore
-module.exports.createCompareFn = (defaultOptions = {}) => (actula, options = {}) => compare(actula, { ...defaultOptions, ...options });
+/**
+ * @typedef SnapshotCompareOptions
+ * @property {{fullName: string}} currentSpec
+ * @property {Object} [customDiffConfig]
+ * @property {string} [customSnapshotsDir]
+ * @property {string} [customDiffDir]
+ * @property {'horizontal'|'vertical'} [diffDirection]
+ * @property {number} [failureThreshold]
+ * @property {'pixel'|'percent'} [failureThresholdType]
+ * @property {boolean} [updatePassedSnapshot]
+ * @property {boolean} [updateSnapshot]
+ * @property {boolean} [allowSizeMismatch]
+ * @property {number} [blur]
+ * @property {boolean} [runInProcess]
+ * @property {'pixelmatch'|'ssim'} [comparisonMethod]
+ * @property {function} [markTouchedFile]
+ */
 
+module.exports.createCompareFn = (defaultOptions = /**@type {SnapshotCompareOptions}*/({})) => (actula, options = /**@type {SnapshotCompareOptions}*/({})) => compare(actula, { ...defaultOptions, ...options });
+
+/**
+ * 
+ * @param {*} actual 
+ * @param {SnapshotCompareOptions} options 
+ * @returns {{message: string, pass: boolean}}
+ */
 function compare(actual, {
-  // @ts-ignore
   currentSpec,
   customDiffConfig = {},
   customSnapshotsDir = path.join(path.dirname(__filename), SNAPSHOTS_DIR),
-  // @ts-ignore
   customDiffDir,
   diffDirection = 'horizontal',
   failureThreshold = 0,
@@ -23,9 +43,8 @@ function compare(actual, {
   runInProcess = false,
   allowSizeMismatch = false,
   comparisonMethod = 'pixelmatch',
-  // @ts-ignore
   markTouchedFile
-} = {}) {
+}) {
   const snapshotIdentifier = currentSpec.fullName.replace(/\s+/g, '_');
   const snapshotsDir = customSnapshotsDir;
   const diffDir = customDiffDir || path.join(snapshotsDir, '__diff_output__');
