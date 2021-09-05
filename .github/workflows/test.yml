@@ -17,3 +17,5 @@ jobs:
         run: |
           npm ci
           npm run test:type
+          npm run lint
+          npm run test
