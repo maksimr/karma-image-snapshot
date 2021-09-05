@@ -1,0 +1,36 @@
+# This workflow will run npm publish every time when you push
+# a tag started with "v". For example "v1.0"
+#
+# Require setup environment variable "NPM_AUTH_TOKEN"
+# - Open https://www.npmjs.com/settings/[username]/tokens and create new token
+# - Open https://github.com/[user]/[project]/settings/secrets and add new secret where name "NPM_AUTH_TOKEN" and value is a token from the first step
+name: Publish
+
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  publish:
+    runs-on: macos-latest
+    steps:
+      - name: tag
+        id: tag
+        run: echo "##[set-output name=name;]${GITHUB_REF/refs\/tags\//}"
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{ steps.tag.outputs.name }}
+      - name: node
+        run: echo "##[set-output name=versoin;]$(cat .nvmrc)"
+        id: node
+      - uses: actions/setup-node@v2
+        with:
+          node-version: "${{ steps.node.outputs.version }}"
+      - name: Publish
+        run: |
+          npm ci
+          echo //registry.npmjs.org/:_authToken=${NPM_TOKEN} > .npmrc
+          npm publish --access public
+        env:
+          NPM_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}

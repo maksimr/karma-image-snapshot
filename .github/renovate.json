@@ -1,0 +1,15 @@
+{
+  "extends": [
+    "config:base"
+  ],
+  "automerge": true,
+  "packageRules": [
+    {
+      "depTypeList": [
+        "dependencies",
+        "devDependencies"
+      ],
+      "automerge": true
+    }
+  ]
+}
