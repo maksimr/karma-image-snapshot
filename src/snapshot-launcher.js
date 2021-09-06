@@ -61,8 +61,8 @@ module.exports = {
       const puppeteer = require('puppeteer');
       browser = await puppeteer.launch({ args: this._getOptions('') });
       const page = await browser.newPage();
-      await page.exposeFunction('setViewport', (options) => {
-        page.setViewport(options);
+      await page.exposeFunction('setViewport', async (options) => {
+        await page.setViewport(options);
       });
       await page.exposeFunction('screenshot', async (options) => {
         const crypto = require('crypto');

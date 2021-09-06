@@ -1,7 +1,7 @@
 describe('example', () => {
-  beforeAll(() => {
+  beforeAll(async () => {
     // @ts-ignore
-    window.setViewport({width: 800, height: 600});
+    await window.setViewport({ width: 800, height: 600 });
   });
 
   let rootNode;
