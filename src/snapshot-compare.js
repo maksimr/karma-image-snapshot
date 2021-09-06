@@ -1,5 +1,5 @@
 const path = require('path');
-const { diffImageToSnapshot, runDiffImageToSnapshot } = require('jest-image-snapshot/src/diff-snapshot');
+const {diffImageToSnapshot, runDiffImageToSnapshot} = require('jest-image-snapshot/src/diff-snapshot');
 const updateSnapshotDefault = Boolean(process.argv.find((arg) => /^\s*(--updateSnapshot|-u)\s*$/.test(arg)));
 const SNAPSHOTS_DIR = '__image_snapshots__';
 
@@ -21,12 +21,12 @@ const SNAPSHOTS_DIR = '__image_snapshots__';
  * @property {function} [markTouchedFile]
  */
 
-module.exports.createCompareFn = (defaultOptions = /**@type {SnapshotCompareOptions}*/({})) => (actula, options = /**@type {SnapshotCompareOptions}*/({})) => compare(actula, { ...defaultOptions, ...options });
+module.exports.createCompareFn = (defaultOptions = /**@type {SnapshotCompareOptions}*/({})) => (actula, options = /**@type {SnapshotCompareOptions}*/({})) => compare(actula, {...defaultOptions, ...options});
 
 /**
- * 
- * @param {*} actual 
- * @param {SnapshotCompareOptions} options 
+ *
+ * @param {*} actual
+ * @param {SnapshotCompareOptions} options
  * @returns {{message: string, pass: boolean}}
  */
 function compare(actual, {
@@ -75,12 +75,12 @@ function compare(actual, {
   let pass = true;
   let message = '';
   if (!result.updated && !result.added) {
-    ({ pass } = result);
+    ({pass} = result);
     if (!pass) {
       const differencePercentage = result.diffRatio * 100;
       message = (result.diffSize && !allowSizeMismatch ?
-        `Expected image to be the same size as the snapshot (${result.imageDimensions.baselineWidth}x${result.imageDimensions.baselineHeight}), but was different (${result.imageDimensions.receivedWidth}x${result.imageDimensions.receivedHeight}).\n` :
-        `Expected image to match or be a close match to snapshot but was ${differencePercentage}% different from snapshot (${result.diffPixelCount} differing pixels).\n`)
+          `Expected image to be the same size as the snapshot (${result.imageDimensions.baselineWidth}x${result.imageDimensions.baselineHeight}), but was different (${result.imageDimensions.receivedWidth}x${result.imageDimensions.receivedHeight}).\n` :
+          `Expected image to match or be a close match to snapshot but was ${differencePercentage}% different from snapshot (${result.diffPixelCount} differing pixels).\n`)
         + `${('See diff for details:')} ${(result.diffOutputPath)}`;
     }
   }
@@ -88,4 +88,4 @@ function compare(actual, {
     message,
     pass
   };
-};
+}
