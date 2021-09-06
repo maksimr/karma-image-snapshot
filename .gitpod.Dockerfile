@@ -38,3 +38,5 @@ RUN sudo apt-get update \
   lsb-release \
   wget \
   xdg-utils
+
+RUN npm install playwright && npx playwright install-deps
