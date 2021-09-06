@@ -6,10 +6,13 @@ module.exports = {
     baseBrowserDecorator(this);
 
     const driver = compareOptions?.driver ?? require('puppeteer');
+    const driverName = driver.product ?? driver.name?.();
     const compare = createCompareFn(compareOptions || {});
     let browser = null;
     let screenshots = /**@type {Object|null}*/({});
     const flags = args.flags || [];
+
+    this.name = driverName;
 
     this._getOptions = (url) => {
       flags.forEach(function(flag, i) {
@@ -74,7 +77,7 @@ module.exports = {
 
     this.on('kill', async (done) => {
       if (browser != null) {
-        console.log('Closing browser.');
+        console.log(`Closing ${driverName} browser.`);
         await browser.close();
         screenshots = null;
         browser = null;
