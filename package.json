@@ -25,9 +25,8 @@
   "scripts": {
     "release": "npm version patch -m 'bump: version to %s'",
     "postrelease": "git push && git push --tags",
-    "test:pp": "karma start ./test/karma.config.js",
-    "test:pw": "PW=true karma start ./test/karma.config.js",
-    "test": "npm run test:pp && npm run test:pw",
+    "test": "karma start ./test/karma.config.js",
+    "test:e2e": "npm run test && PW=chromium npm run test && PW=firefox npm run test",
     "test:type": "tsc",
     "lint": "eslint src/"
   },

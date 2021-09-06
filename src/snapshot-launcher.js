@@ -21,7 +21,6 @@ module.exports = {
         '--enable-automation',
         '--no-default-browser-check',
         '--no-first-run',
-        '--disable-default-apps',
         '--disable-popup-blocking',
         '--disable-translate',
         '--disable-background-timer-throttling',

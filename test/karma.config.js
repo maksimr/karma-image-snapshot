@@ -14,7 +14,7 @@ module.exports = function(config) {
     ],
     snapshot: {
       driver: process.env.PW ?
-        require('playwright').chromium :
+        require('playwright')[process.env.PW] ?? require('playwright').chromium :
         require('puppeteer'),
       customSnapshotsDir: snapshotDir
     },
