@@ -22,7 +22,11 @@ module.exports = {
       this.specSkipped = function() {
       };
 
-    this.onBrowserComplete = function() {
+    this.onBrowserComplete = function(browser) {
+      if (browser.lastResult?.failed || browser.lastResult?.error) {
+        return;
+      }
+
       const obsoleteFiles = Object.keys(imageSnapshotDirectories)
         .map(dir => fs.readdirSync(dir).map(file => path.join(dir, file)))
         .reduce((a, b) => a.concat(b), [])
