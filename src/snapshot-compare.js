@@ -45,7 +45,9 @@ function compare(actual, {
   comparisonMethod = 'pixelmatch',
   markTouchedFile
 }) {
-  const snapshotIdentifier = currentSpec.fullName.replace(/\s+/g, '_');
+  const snapshotIdentifier = currentSpec.fullName
+    .replace(/\s+/g, '_')
+    .replace(/*remove forbidden characters for Windows file path*//[<>:"/\\|?*]/g, '_');
   const snapshotsDir = customSnapshotsDir;
   const diffDir = customDiffDir || path.join(snapshotsDir, '__diff_output__');
   const imageToSnapshot = runInProcess ? diffImageToSnapshot : runDiffImageToSnapshot;
