@@ -25,7 +25,9 @@
   "scripts": {
     "release": "npm version patch -m 'bump: version to %s'",
     "postrelease": "git push && git push --tags",
-    "test": "karma start ./test/karma.config.js",
+    "test:pp": "karma start ./test/karma.config.js",
+    "test:pw": "PW=true karma start ./test/karma.config.js",
+    "test": "npm run test:pp && npm run test:pw",
     "test:type": "tsc",
     "lint": "eslint src/"
   },
@@ -35,6 +37,7 @@
   },
   "devDependencies": {
     "puppeteer": ">=10.2.0",
+    "playwright": ">=1.14.1",
     "jest-image-snapshot": ">=4.5.1",
     "karma": "6.3.4",
     "karma-jasmine": "4.0.1",

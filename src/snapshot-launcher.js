@@ -2,14 +2,14 @@ const { createCompareFn } = require('./snapshot-compare');
 const markTouchedFile = require('./outdated-snapshot-reporter').markTouchedFile;
 
 module.exports = {
-  'launcher:SnapshotPuppeteer': ['type', /**@this {*}*/function(/* baseBrowserDecorator */ baseBrowserDecorator, /* args */ args, /*config.snapshot*/compareOptions) {
+  'launcher:SnapshotBrowser': ['type', /**@this {*}*/function(/* baseBrowserDecorator */ baseBrowserDecorator, /* args */ args, /*config.snapshot*/compareOptions) {
     baseBrowserDecorator(this);
 
+    const driver = compareOptions?.driver ?? require('puppeteer');
     const compare = createCompareFn(compareOptions || {});
     let browser = null;
     let screenshots = /**@type {Object|null}*/({});
     const flags = args.flags || [];
-    const userDataDir = args.chromeDataDir || this._tempDir;
 
     this._getOptions = (url) => {
       flags.forEach(function(flag, i) {
@@ -18,7 +18,6 @@ module.exports = {
         }
       });
       const mergedArgs = [
-        '--user-data-dir=' + userDataDir,
         '--enable-automation',
         '--no-default-browser-check',
         '--no-first-run',
@@ -58,11 +57,11 @@ module.exports = {
     };
 
     this._start = async (url) => {
-      const puppeteer = require('puppeteer');
-      browser = await puppeteer.launch({ args: this._getOptions('') });
+      browser = await driver.launch({ args: this._getOptions('') });
       const page = await browser.newPage();
       await page.exposeFunction('setViewport', async (options) => {
-        await page.setViewport(options);
+        const setViewport = page.setViewport ?? page.setViewportSize;
+        await setViewport.call(page, options);
       });
       await page.exposeFunction('screenshot', async (options) => {
         const crypto = require('crypto');
@@ -76,7 +75,7 @@ module.exports = {
 
     this.on('kill', async (done) => {
       if (browser != null) {
-        console.log('Closing puppeteer browser.');
+        console.log('Closing browser.');
         await browser.close();
         screenshots = null;
         browser = null;
