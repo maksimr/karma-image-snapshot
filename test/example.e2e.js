@@ -1,4 +1,9 @@
 describe('example', () => {
+  beforeAll(() => {
+    // @ts-ignore
+    window.setViewport({width: 800, height: 600});
+  });
+
   let rootNode;
   beforeEach(function() {
     rootNode = document.createElement('div');
