@@ -31,7 +31,7 @@ module.exports = function(config) {
 };
 ```
 
-Now in you can use `window.screenshot` function and asynchronous jasmine matcher `toMatchImageSnapshot`
+Now in you can use `window.screenshot`, `window.setViewport` functions and asynchronous jasmine matcher `toMatchImageSnapshot`
 
 ```js
 /** example.e2e.js*/
