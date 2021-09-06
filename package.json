@@ -1,6 +1,16 @@
 {
   "name": "karma-image-snapshot",
   "version": "0.0.3",
+  "description": "Jasmine matcher for image comparisons based on jest-image-snapshot for visual regression testing",
+  "author": "Maksim Ryzhikov <rv.maksim@gmail.com> (https://github.com/maksimr)",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/maksimr/karma-image-snapshot.git"
+  },
+  "engines": {
+    "node": ">= 14"
+  },
   "main": "./src/index.js",
   "keywords": [
     "test",
