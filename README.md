@@ -43,3 +43,19 @@ it('should compare image snapshots', async function() {
 ```
 
 Working configuration and test example you can find in `test` directory
+
+## Playwright
+
+You can use playwright instead of puppeteer
+
+```js
+/** karma.config.js*/
+module.exports = function(config) {
+  config.set({
+    /*...*/
+    snapshot: {
+      driver: require('playwright').firefox
+    }
+  });
+};
+```
