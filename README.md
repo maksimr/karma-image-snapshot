@@ -9,12 +9,12 @@ on [jest-image-snapshot](https://github.com/americanexpress/jest-image-snapshot)
 /** karma.config.js*/
 module.exports = function(config) {
   config.set({
-    frameworks: ['snapshot-jasmine', 'jasmine'],
+    frameworks: [/*✔️*/'snapshot-jasmine', 'jasmine'],
     /*...*/
     snapshot: {
       customSnapshotsDir: require('path').resolve(__dirname, '__image_snapshots__')
     },
-    browsers: ['SnapshotBrowser']
+    browsers: [/*✔️*/'SnapshotBrowser']
   });
 };
 ```
@@ -26,7 +26,7 @@ If you want to automatically remove outdated snapshots you should add special re
 module.exports = function(config) {
   config.set({
     /*...*/
-    reporters: [/*...*/, 'outdated-snapshot']
+    reporters: [/*...*/, /*✔️*/'outdated-snapshot']
   });
 };
 ```
