@@ -20,7 +20,7 @@ module.exports = function(config) {
     },
     customLaunchers: {
       Browser_no_hinting: {
-        base: 'SnapshotBrowser',
+        base: 'SnapshotLauncher',
         flags: ['--font-render-hinting=none', '--no-sandbox']
       }
     },

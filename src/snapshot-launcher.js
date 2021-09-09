@@ -2,7 +2,7 @@ const { createCompareFn } = require('./snapshot-compare');
 const markTouchedFile = require('./outdated-snapshot-reporter').markTouchedFile;
 
 module.exports = {
-  'launcher:SnapshotBrowser': ['type', /**@this {*}*/function(/* baseBrowserDecorator */ baseBrowserDecorator, /* args */ args, /*config.snapshot*/compareOptions) {
+  'launcher:SnapshotLauncher': ['type', /**@this {*}*/function(/* baseBrowserDecorator */ baseBrowserDecorator, /* args */ args, /*config.snapshot*/compareOptions) {
     baseBrowserDecorator(this);
 
     const driver = compareOptions?.driver ?? require('puppeteer');
