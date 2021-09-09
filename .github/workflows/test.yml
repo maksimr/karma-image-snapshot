@@ -18,4 +18,4 @@ jobs:
           npm ci
           npm run test:type
           npm run lint
-          npm run test:e2e
+          npm run test:full
