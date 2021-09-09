@@ -31,7 +31,7 @@ module.exports = function(config) {
 };
 ```
 
-Now in you can use `window.screenshot`, `window.setViewport` functions and asynchronous jasmine matcher `toMatchImageSnapshot`
+Now you can use `window.screenshot`, `window.setViewport` functions and asynchronous jasmine matcher `toMatchImageSnapshot` in your tests
 
 ```js
 /** example.e2e.js*/
@@ -43,6 +43,10 @@ it('should compare image snapshots', async function() {
 ```
 
 Working configuration and test example you can find in `test` directory
+
+## API
+
+Available properties for `snapshot` and `toMatchImageSnapshot` you can look [here](https://github.com/americanexpress/jest-image-snapshot#%EF%B8%8F-api)
 
 ## Playwright
 
