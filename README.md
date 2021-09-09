@@ -14,7 +14,7 @@ module.exports = function(config) {
     snapshot: {
       customSnapshotsDir: require('path').resolve(__dirname, '__image_snapshots__')
     },
-    browsers: [/*✅*/'SnapshotLauncher']
+    browsers: [/*✅*/'SnapshotLauncher' /* or SnapshotHeadlessLauncher*/]
   });
 };
 ```

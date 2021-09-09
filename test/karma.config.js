@@ -17,17 +17,17 @@ module.exports = function(config) {
     },
     customLaunchers: {
       Chrome: {
-        base: 'SnapshotLauncher',
+        base: 'SnapshotHeadlessLauncher',
         driver: require('puppeteer'),
         flags: ['--font-render-hinting=none', '--no-sandbox']
       },
       Chromium: {
-        base: 'SnapshotLauncher',
+        base: 'SnapshotHeadlessLauncher',
         driver: require('playwright').chromium,
         flags: ['--font-render-hinting=none', '--no-sandbox']
       },
       Firefox: {
-        base: 'SnapshotLauncher',
+        base: 'SnapshotHeadlessLauncher',
         driver: require('playwright').firefox,
         flags: ['--font-render-hinting=none', '--no-sandbox']
       }
