@@ -27,6 +27,7 @@
     "postrelease": "git push && git push --tags",
     "test": "karma start ./test/karma.config.js",
     "test:full": "npm run test -- --browsers=Chrome,Chromium,Firefox",
+    "test:outdated": "node ./test/test-outdated.js",
     "test:type": "tsc",
     "lint": "eslint src/"
   },

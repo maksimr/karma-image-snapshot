@@ -15,6 +15,7 @@ module.exports = {
     this.renderBrowser =
       this.onBrowserError =
       this.onBrowserLog =
+      this.onBrowserComplete =
       this.onSpecComplete =
       this.onRunComplete =
       this.specFailure =
@@ -22,8 +23,8 @@ module.exports = {
       this.specSkipped = function() {
       };
 
-    this.onBrowserComplete = function(browser) {
-      if (browser.lastResult?.failed || browser.lastResult?.error) {
+    this.onRunComplete = function(browsers, results) {
+      if (browsers.length < 1 || results.disconnected || results.error || results.failed) {
         return;
       }
 

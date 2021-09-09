@@ -33,6 +33,7 @@ jobs:
           npm run test:type
           npm run lint
           npm run test:full
+          npm run test:outdated
           echo //registry.npmjs.org/:_authToken=${NPM_TOKEN} > .npmrc
           npm publish --access public
         env:

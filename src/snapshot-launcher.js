@@ -65,9 +65,9 @@ module.exports = {
         const setViewport = page.setViewport ?? page.setViewportSize;
         await setViewport.call(page, options);
       });
-      await page.exposeFunction('screenshot', async (options) => {
+      await page.exposeFunction('screenshot', async ({ name = null, ...options } = {}) => {
         const crypto = require('crypto');
-        const id = crypto.randomBytes(16).toString('hex');
+        const id = name ?? crypto.randomBytes(16).toString('hex');
         screenshots[id] = await page.screenshot(options);
         return id;
       });
