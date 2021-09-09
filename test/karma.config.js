@@ -13,20 +13,28 @@ module.exports = function(config) {
       require('../src/index')
     ],
     snapshot: {
-      driver: process.env.PW ?
-        require('playwright')[process.env.PW] ?? require('playwright').chromium :
-        require('puppeteer'),
       customSnapshotsDir: snapshotDir
     },
     customLaunchers: {
-      Browser_no_hinting: {
+      Chrome: {
         base: 'SnapshotLauncher',
+        driver: require('puppeteer'),
+        flags: ['--font-render-hinting=none', '--no-sandbox']
+      },
+      Chromium: {
+        base: 'SnapshotLauncher',
+        driver: require('playwright').chromium,
+        flags: ['--font-render-hinting=none', '--no-sandbox']
+      },
+      Firefox: {
+        base: 'SnapshotLauncher',
+        driver: require('playwright').firefox,
         flags: ['--font-render-hinting=none', '--no-sandbox']
       }
     },
     reporters: ['progress', 'outdated-snapshot'],
     autoWatch: true,
-    browsers: ['Browser_no_hinting'],
+    browsers: ['Chrome'],
     singleRun: true
   });
 };

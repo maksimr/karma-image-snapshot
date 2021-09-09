@@ -57,8 +57,11 @@ You can use playwright instead of puppeteer
 module.exports = function(config) {
   config.set({
     /*...*/
-    snapshot: {
-      driver: require('playwright').firefox
+    customLaunchers: {
+      Firefox: {
+        base: 'SnapshotLauncher',
+        driver: require('playwright').firefox
+      }
     }
   });
 };

@@ -26,7 +26,7 @@
     "release": "npm version patch -m 'bump: version to %s'",
     "postrelease": "git push && git push --tags",
     "test": "karma start ./test/karma.config.js",
-    "test:e2e": "npm run test && PW=chromium npm run test && PW=firefox npm run test",
+    "test:e2e": "npm run test && npm run test -- --browsers=Chromium && npm run test -- --browsers=Firefox",
     "test:type": "tsc",
     "lint": "eslint src/"
   },

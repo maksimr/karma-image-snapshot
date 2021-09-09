@@ -5,7 +5,7 @@ module.exports = {
   'launcher:SnapshotLauncher': ['type', /**@this {*}*/function(/* baseBrowserDecorator */ baseBrowserDecorator, /* args */ args, /*config.snapshot*/compareOptions) {
     baseBrowserDecorator(this);
 
-    const driver = compareOptions?.driver ?? require('puppeteer');
+    const driver = args?.driver ?? require('puppeteer');
     const driverName = driver.product ?? driver.name?.();
     const compare = createCompareFn(compareOptions || {});
     let browser = null;
