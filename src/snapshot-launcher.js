@@ -5,6 +5,7 @@ const SnapshotLauncher = /**@this {*}*/function(/* baseBrowserDecorator */ baseB
   baseBrowserDecorator(this);
 
   const driver = args?.driver ?? require('puppeteer');
+  const options = args?.options ?? {};
   const driverName = driver.product ?? driver.name?.();
   const compare = createCompareFn(compareOptions || {});
   let browser = null;
@@ -55,7 +56,10 @@ const SnapshotLauncher = /**@this {*}*/function(/* baseBrowserDecorator */ baseB
   };
 
   this._start = async (url) => {
-    browser = await driver.launch({ args: this._getOptions('') });
+    browser = await driver.launch({
+      args: this._getOptions('') ,
+      ...options
+    });
     const page = await browser.newPage();
     await page.exposeFunction('setViewport', async (options) => {
       const setViewport = page.setViewport ?? page.setViewportSize;

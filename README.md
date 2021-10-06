@@ -48,6 +48,27 @@ Working configuration and test example you can find in `test` directory
 
 Available properties for `snapshot` and `toMatchImageSnapshot` you can look [here](https://github.com/americanexpress/jest-image-snapshot#%EF%B8%8F-api)
 
+## Browser flags & options
+You can tune browser settings through flags & options
+
+```js
+/** karma.config.js*/
+module.exports = function(config) {
+  config.set({
+    /*...*/
+    customLaunchers: {
+      Chrome: {
+        base: 'SnapshotLauncher',
+        options: /*✅*/{
+          devtools: true
+        },
+        flags: [/*✅*/'--font-render-hinting=none', '--no-sandbox']
+      }
+    }
+  });
+};
+```
+
 ## Playwright
 
 You can use playwright instead of puppeteer
