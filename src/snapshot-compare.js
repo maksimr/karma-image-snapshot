@@ -1,4 +1,5 @@
 const path = require('path');
+// @ts-ignore
 const {diffImageToSnapshot, runDiffImageToSnapshot} = require('jest-image-snapshot/src/diff-snapshot');
 const updateSnapshotDefault = Boolean(process.argv.find((arg) => /^\s*(--updateSnapshot|-u)\s*$/.test(arg)));
 const SNAPSHOTS_DIR = '__image_snapshots__';
@@ -21,7 +22,7 @@ const SNAPSHOTS_DIR = '__image_snapshots__';
  * @property {function} [markTouchedFile]
  */
 
-module.exports.createCompareFn = (defaultOptions = /**@type {SnapshotCompareOptions}*/({})) => (actula, options = /**@type {SnapshotCompareOptions}*/({})) => compare(actula, {...defaultOptions, ...options});
+module.exports.createCompareFn = (defaultOptions = /**@type {SnapshotCompareOptions}*/({})) => (/**@type {*}*/actula, options = /**@type {SnapshotCompareOptions}*/({})) => compare(actula, {...defaultOptions, ...options});
 
 /**
  *

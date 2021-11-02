@@ -4,6 +4,7 @@ describe('example', () => {
     await window.setViewport({ width: 800, height: 600 });
   });
 
+  /**@type {HTMLElement}*/
   let rootNode;
   beforeEach(function() {
     rootNode = document.createElement('div');

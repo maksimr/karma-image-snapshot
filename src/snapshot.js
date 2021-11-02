@@ -30,7 +30,7 @@ beforeAll(() => {
   jasmine.addAsyncMatchers({
     toMatchImageSnapshot: function() {
       return {
-        async compare(actual, options) {
+        async compare(/**@type {*}*/actual, /**@type {*}*/options) {
           if (actual === IMAGE_SNAPSHOT_NOT_SUPPORTED) {
             return {
               pass: false,

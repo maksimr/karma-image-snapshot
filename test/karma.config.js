@@ -1,4 +1,4 @@
-module.exports = function(config) {
+module.exports = function(/**@type {*}*/config) {
   const snapshotDir = require('path').resolve(__dirname, '__image_snapshots__');
   const files = [
     { pattern: 'test/**/*.e2e.js', watched: true }
