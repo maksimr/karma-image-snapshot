@@ -6,7 +6,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: node
         run: echo "##[set-output name=versoin;]$(cat .nvmrc)"
         id: node
