@@ -36,7 +36,7 @@
   },
   "devDependencies": {
     "puppeteer": "13.5.2",
-    "playwright": "1.20.2",
+    "playwright": "1.21.0",
     "jest-image-snapshot": "4.5.1",
     "karma": "6.3.17",
     "karma-jasmine": "4.0.2",
