@@ -9,6 +9,7 @@ const SNAPSHOTS_DIR = '__image_snapshots__';
  * @property {{fullName: string}} currentSpec
  * @property {Object} [customDiffConfig]
  * @property {string} [customSnapshotsDir]
+ * @property {string} [customReceivedDir]
  * @property {string} [customDiffDir]
  * @property {'horizontal'|'vertical'} [diffDirection]
  * @property {number} [failureThreshold]
@@ -34,6 +35,7 @@ function compare(actual, {
   currentSpec,
   customDiffConfig = {},
   customSnapshotsDir = path.join(path.dirname(__filename), SNAPSHOTS_DIR),
+  customReceivedDir,
   customDiffDir,
   diffDirection = 'horizontal',
   failureThreshold = 0,
@@ -50,6 +52,7 @@ function compare(actual, {
     .replace(/\s+/g, '_')
     .replace(/*remove forbidden characters for Windows file path*//[<>:"/\\|?*]/g, '_');
   const snapshotsDir = customSnapshotsDir;
+  const receivedDir = customReceivedDir || path.join(snapshotsDir, '__received_output__');
   const diffDir = customDiffDir || path.join(snapshotsDir, '__diff_output__');
   const imageToSnapshot = runInProcess ? diffImageToSnapshot : runDiffImageToSnapshot;
   const baselineSnapshotPath = path.join(snapshotsDir, `${snapshotIdentifier}-snap.png`);
@@ -61,6 +64,7 @@ function compare(actual, {
   const result = imageToSnapshot({
     receivedImageBuffer: actual,
     snapshotsDir,
+    receivedDir,
     diffDir,
     diffDirection,
     snapshotIdentifier,
