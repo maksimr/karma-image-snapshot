@@ -22,8 +22,9 @@
     "browser testing"
   ],
   "scripts": {
-    "release": "npm version patch -m 'bump: version to %s'",
-    "postrelease": "git push && git push --tags",
+    "release:major": "npm version major -m 'bump: version to %s' && git push origin && git push origin --tags",
+    "release:minor": "npm version minor -m 'bump: version to %s' && git push origin && git push origin --tags",
+    "release:patch": "npm version patch -m 'bump: version to %s' && git push origin && git push origin --tags",
     "test": "karma start ./test/karma.config.js",
     "test:full": "npm run test -- --browsers=Chrome,Chromium,Firefox",
     "test:outdated": "node ./test/test-outdated.js",
