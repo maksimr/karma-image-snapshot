@@ -1,3 +1,17 @@
+#### 0.0.12 (2022-06-05)
+
+##### Chores
+
+* **deps:**
+  *  update dependency jest-image-snapshot to v5 ([4e57fd50](https://github.com/maksimr/karma-image-snapshot/commit/4e57fd5071afd4125f20a92b985ce7998914e2b9))
+  *  pin dependency generate-changelog to 1.8.0 ([94b041c9](https://github.com/maksimr/karma-image-snapshot/commit/94b041c9d48b99243d414d648d4e534260f78b2e))
+*  add test badge to README ([40491f2f](https://github.com/maksimr/karma-image-snapshot/commit/40491f2f4152ee7e02796b2718b48d4375de98f5))
+*  run browsers in sequence to prevent puppeteer fail ([d95f6b6e](https://github.com/maksimr/karma-image-snapshot/commit/d95f6b6ee95f6cf7d1116fb7aa187c91de900b5b))
+
+##### New Features
+
+*  rename `driver` to `browserType` ([11c1a161](https://github.com/maksimr/karma-image-snapshot/commit/11c1a1618a048a6852f0ed5ea79e743c3bc2e38b))
+
 #### 0.0.11 (2022-06-05)
 
 ##### Chores
