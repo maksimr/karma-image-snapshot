@@ -22,9 +22,12 @@
     "browser testing"
   ],
   "scripts": {
-    "release:major": "npm version major -m 'bump: version to %s' && git push origin && git push origin --tags",
-    "release:minor": "npm version minor -m 'bump: version to %s' && git push origin && git push origin --tags",
-    "release:patch": "npm version patch -m 'bump: version to %s' && git push origin && git push origin --tags",
+    "release:major": "changelog -M && npm run release -- major",
+    "release:minor": "changelog -m && npm run release -- minor",
+    "release:patch": "changelog -p && npm run release -- patch",
+    "prerelease": "git add CHANGELOG.md && git commit -m 'updated CHANGELOG.md'",
+    "release": "npm version -m 'bump: version to %s'",
+    "postrelease": "git push origin && git push origin --tags",
     "test": "karma start ./test/karma.config.js",
     "test:full": "npm run test -- --browsers=Chrome,Chromium,Firefox",
     "test:outdated": "node ./test/test-outdated.js",
@@ -44,7 +47,8 @@
     "typescript": "4.7.3",
     "eslint": "8.17.0",
     "@types/node": "16.11.38",
-    "@types/jasmine": "4.0.3"
+    "@types/jasmine": "4.0.3",
+    "generate-changelog": "^1.8.0"
   },
   "eslintConfig": {
     "parserOptions": {
