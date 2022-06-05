@@ -9,9 +9,9 @@ const markTouchedFile = require('./outdated-snapshot-reporter').markTouchedFile;
 const SnapshotLauncher = /**@this {*}*/function(/* baseBrowserDecorator */ baseBrowserDecorator, /* args */ args, /*config.snapshot*/compareOptions) {
   baseBrowserDecorator(this);
 
-  const driver = args?.driver ?? require('puppeteer');
+  const browserType = args?.browserType ?? require('puppeteer');
   const options = args?.options ?? {};
-  const driverName = driver.product ?? driver.name?.();
+  const browserName = browserType.product ?? browserType.name?.();
   const compare = createCompareFn(compareOptions || {});
   /**@type {any}*/
   let browser = null;
@@ -19,7 +19,7 @@ const SnapshotLauncher = /**@this {*}*/function(/* baseBrowserDecorator */ baseB
   let screenshots = {};
   const flags = args.flags || [];
 
-  this.name = driverName;
+  this.name = browserName;
 
   this._getOptions = (/**@type {string}*/url) => {
     flags.forEach(function(/**@type {string}*/flag, /**@type {number}*/i) {
@@ -64,7 +64,7 @@ const SnapshotLauncher = /**@this {*}*/function(/* baseBrowserDecorator */ baseB
 
   this._start = async (/**@type {string}*/url) => {
     screenshots = screenshots ?? {};
-    browser = await driver.launch({
+    browser = await browserType.launch({
       args: this._getOptions(''),
       ...options
     });
@@ -87,7 +87,7 @@ const SnapshotLauncher = /**@this {*}*/function(/* baseBrowserDecorator */ baseB
 
   this.on('kill', async (/**@type {*}*/done) => {
     if (browser != null) {
-      console.log(`Closing ${driverName} browser.`);
+      console.log(`Closing ${browserName} browser.`);
       await browser.close();
       screenshots = null;
       browser = null;

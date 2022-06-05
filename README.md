@@ -81,7 +81,7 @@ module.exports = function(config) {
     customLaunchers: {
       Firefox: {
         base: 'SnapshotLauncher',
-        driver: require('playwright').firefox
+        browserType: require('playwright').firefox
       }
     }
   });
