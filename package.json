@@ -48,7 +48,7 @@
     "eslint": "8.17.0",
     "@types/node": "16.11.38",
     "@types/jasmine": "4.0.3",
-    "generate-changelog": "^1.8.0"
+    "generate-changelog": "1.8.0"
   },
   "eslintConfig": {
     "parserOptions": {
