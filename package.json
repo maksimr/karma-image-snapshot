@@ -29,7 +29,10 @@
     "release": "npm version -m 'bump: version to %s'",
     "postrelease": "git push origin && git push origin --tags",
     "test": "karma start ./test/karma.config.js",
-    "test:full": "npm run test -- --browsers=Chrome,Chromium,Firefox",
+    "test:browser:chrome": "npm run test -- --browsers=Chrome",
+    "test:browser:chromium": "npm run test -- --browsers=Chromium",
+    "test:browser:firefox": "npm run test -- --browsers=Firefox",
+    "test:browser:all": "npm run test:browser:chrome && npm run test:browser:firefox && npm run test:browser:chromium",
     "test:outdated": "node ./test/test-outdated.js",
     "test:type": "tsc",
     "lint": "eslint src/"
