@@ -10,7 +10,7 @@ jasmine.getEnv().addReporter({
   }
 });
 
-const IMAGE_SNAPSHOT_NOT_SUPPORTED = -1;
+const IMAGE_SNAPSHOT_NOT_SUPPORTED = Symbol.for('IMAGE_SNAPSHOT_NOT_SUPPORTED');
 // @ts-ignore
 if (typeof window.screenshot === 'undefined') {
   // @ts-ignore
