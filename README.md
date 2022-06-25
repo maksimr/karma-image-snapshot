@@ -1,6 +1,7 @@
 # karma-image-snapshot
 ![Test](https://github.com/maksimr/karma-image-snapshot/workflows/Test/badge.svg)
 [![Open in Gitpod](https://img.shields.io/badge/Gitpod-Open%20in%20Gitpod-%230092CF.svg)](https://gitpod.io/#https://github.com/maksimr/karma-image-snapshot)
+[![npm](https://img.shields.io/npm/v/karma-image-snapshot)](https://www.npmjs.com/package/karma-image-snapshot)
 
 Jasmine matcher that performs image comparisons based
 on [jest-image-snapshot](https://github.com/americanexpress/jest-image-snapshot) for visual regression testing
