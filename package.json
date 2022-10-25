@@ -49,7 +49,7 @@
     "karma-jasmine": "5.1.0",
     "typescript": "4.8.4",
     "eslint": "8.26.0",
-    "@types/node": "16.18.0",
+    "@types/node": "18.11.5",
     "@types/jasmine": "4.3.0",
     "generate-changelog": "1.8.0"
   },
