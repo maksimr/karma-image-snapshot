@@ -45,7 +45,7 @@
     "puppeteer": "19.10.1",
     "playwright": "1.32.3",
     "jest-image-snapshot": "6.1.0",
-    "karma": "6.4.1",
+    "karma": "6.4.2",
     "karma-jasmine": "5.1.0",
     "typescript": "5.0.4",
     "eslint": "8.38.0",
