@@ -19,7 +19,7 @@ module.exports = function(/**@type {*}*/config) {
       Chrome: {
         base: 'SnapshotHeadlessLauncher',
         browserType: require('puppeteer'),
-        flags: ['--font-render-hinting=none', '--no-sandbox']
+        flags: ['--headless=new', '--font-render-hinting=none', '--no-sandbox']
       },
       Chromium: {
         base: 'SnapshotHeadlessLauncher',
