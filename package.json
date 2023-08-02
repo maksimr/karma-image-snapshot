@@ -42,7 +42,7 @@
     "jest-image-snapshot": ">=4.5.1"
   },
   "devDependencies": {
-    "puppeteer": "20.9.0",
+    "puppeteer": "21.0.0",
     "playwright": "1.36.2",
     "jest-image-snapshot": "6.2.0",
     "karma": "6.4.2",
