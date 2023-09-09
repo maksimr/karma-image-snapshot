@@ -48,7 +48,7 @@
     "karma": "6.4.2",
     "karma-jasmine": "5.1.0",
     "typescript": "5.2.2",
-    "eslint": "8.48.0",
+    "eslint": "8.49.0",
     "@types/node": "18.17.15",
     "@types/jasmine": "4.3.5",
     "generate-changelog": "1.8.0"
