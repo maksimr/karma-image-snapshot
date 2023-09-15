@@ -50,7 +50,7 @@
     "typescript": "5.2.2",
     "eslint": "8.49.0",
     "@types/node": "18.17.16",
-    "@types/jasmine": "4.3.5",
+    "@types/jasmine": "4.3.6",
     "generate-changelog": "1.8.0"
   },
   "eslintConfig": {
