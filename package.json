@@ -47,7 +47,7 @@
     "jest-image-snapshot": "6.4.0",
     "karma": "6.4.3",
     "karma-jasmine": "5.1.0",
-    "typescript": "5.3.3",
+    "typescript": "5.4.2",
     "eslint": "8.57.0",
     "@types/node": "20.11.25",
     "@types/jasmine": "5.1.4",
