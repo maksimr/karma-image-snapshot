@@ -24,7 +24,7 @@ jobs:
       - name: node
         run: echo "##[set-output name=versoin;]$(cat .nvmrc)"
         id: node
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v5
         with:
           node-version: "${{ steps.node.outputs.version }}"
       - name: Publish
