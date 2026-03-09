@@ -44,7 +44,7 @@
   "devDependencies": {
     "puppeteer": "22.15.0",
     "playwright": "1.37.1",
-    "jest-image-snapshot": "6.4.0",
+    "jest-image-snapshot": "6.5.2",
     "karma": "6.4.4",
     "karma-jasmine": "5.1.0",
     "typescript": "5.7.2",
